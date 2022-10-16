@@ -1,0 +1,70 @@
+<link rel="stylesheet" type="text/css" href="tosipay.css">
+<body>
+<div>
+<form class="form-style-7" ACTION="/cgi-bin/tosipayroll/tp_upload.pl" METHOD="post" enctype="multipart/form-data">
+<form ACTION="/cgi-bin/tosipayroll/tp_upload.pl" METHOD="post" enctype="multipart/form-data">
+    <h1>Ergo Payroll Bulk Upload</h1>
+<br>
+<br>
+<body>
+<body style="  background-image: linear-gradient(lightblue, white)">
+<br>
+</body>
+<li>
+    <label for="company_wallet_id">Company Wallet:</label>
+    <input type="text" name="company_wallet_id" maxlength="200" required>
+    <span>this must match what you created the account with</span>
+</li>
+<li>
+    <label for="password">Editing Pasword</label>
+    <input type="password" name="password" maxlength="50" required>
+</li>
+<li>
+    <label for="file">Please upload your CSV file</label></br></br>
+    <input type="file" name="file" required>
+
+</li>
+
+
+	<INPUT TYPE="submit" NAME="Submit" VALUE="Upload CSV"> 
+<br><br><br><br>
+
+
+
+Sample Payroll Header file
+<a href="https://my.ergoport.dev/tosipayroll/sample_tosipayrolll.csv"> here</a>.<br>
+
+<br><br>
+<b>Header Definitions: Leave cell blank if you don't use it, do NOT remove column!</b><br><br>
+<b>company</b><br>
+Your Company Name<br><br>
+
+<b>company_wallet_id</b> (whatever you put in will be overridden by your login wallet, this is intentional for now).<br>
+The ERGO wallet you will be paying from<br><br>
+
+<b>employee_wallet_id</b> <br>
+Your employee's ERGO receiving address<br><br>
+
+<b>employee_email</b><br>
+Optional: Your employee's email for notifications<br><br>
+
+<b>employee_token_id</b><br>
+The token id you want to pay your employee in<br><br>
+
+<b>employee_token_count</b><br>
+How many of those tokes (do not use if you are entering a USD amount in the next column<br><br>
+
+<b>employee_usd_amount</b><br>
+Alternate: Pay them in the chosen token but in a set USD amount (do not use if you use the previous column)<br><br>
+
+<b>employee_pay_frequency</b><br>
+How many times per year to pay employee (24,26,52 are the only options)<br><br>
+
+<b>employee_active_status</b><br>
+yes or no
+
+<br>
+<br>
+
+</form>
+</div>
