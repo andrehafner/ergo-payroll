@@ -1,5 +1,7 @@
 # ergo-payroll
-payroll system for automated payments on ergo
+payroll system for automated payments on ergo<br>
+Employers can pay in ERG, Token Count, or, in USD equivalent of a Token at the time of pay distribution
+
 
 # requirements<br>
 perl<br>
@@ -47,6 +49,7 @@ tp_upload.pl: script for processing the uploaded csv from tp_upload.html<br>
 uploads (folder): place where the company uploads go (prob delete these after ingestion)<br>
 
 # functionality<br>
+- Employers can pay in ERG, Token Count, or, in USD equivalent of a Token at the time of pay distribution<br>
 - Employers create an account and are given a deposit wallet<br>
 - Employers upload a csv of employees and preferences<br>
 - Results are displayed<br>
