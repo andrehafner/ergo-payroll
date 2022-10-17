@@ -28,11 +28,11 @@ my $id = $query->param("$submit\+id");
 
 #test version of login passthrough, will remove when real login system is in place
 if ($wallet_edit eq ''){
-$wallet_edit = $wallet;
+  $wallet_edit = $wallet;
 }
 
 if ($wallet eq ''){
-$wallet = $wallet_edit;
+  $wallet = $wallet_edit;
 }
 
 #removing spaces from the inputs just in case
@@ -78,20 +78,13 @@ my $dbh   = DBI->connect ("DBI:mysql:database=$db:host=$host",
 if ($employee_active_status ne ''){
 
 
-my $sql_edit = "update employee set 
-employee_email_contact='$employee_email_contact', 
-employee_token_id='$employee_token_id', 
-employee_token_count='$employee_token_count', 
-employee_usd_amount='$employee_usd_amount', 
-employee_pay_frequency='$employee_pay_frequency', 
-employee_active_status='$employee_active_status' 
-where id='$id';";
+  my $sql_edit = "update employee set employee_email_contact='$employee_email_contact', employee_token_id='$employee_token_id', employee_token_count='$employee_token_count', employee_usd_amount='$employee_usd_amount', employee_pay_frequency='$employee_pay_frequency', employee_active_status='$employee_active_status' where id='$id';";
 
-#prepare the query
-my $sth_edit = $dbh->prepare($sql_edit);
+  #prepare the query
+  my $sth_edit = $dbh->prepare($sql_edit);
 
-#execute the query
-$sth_edit->execute();
+  #execute the query
+  $sth_edit->execute();
 
 }
 
@@ -101,9 +94,10 @@ my $html = ();
 
 if ($wallet eq '' && $access eq ''){
 
-$html = ();
+  $html = ();
 
-$html = qq{Content-Type: text/html
+######HTML SECTION IGNORING INDENTING#######
+  $html = qq{Content-Type: text/html
 
 <link rel="stylesheet" type="text/css" href="https://my.ergoport.dev/tosipayroll/tosipay.css">
 
@@ -149,13 +143,14 @@ exit;
 
 }
 
+########END HTML##########
 
 ### password access check ######
 
 my $sql_access = "select * from employer where company_wallet_id='$wallet' and password=MD5('$pass');";
 
 if ($access ne ''){
-$sql_access = "select * from employer where company_wallet_id='$wallet' and password='$access';";
+  $sql_access = "select * from employer where company_wallet_id='$wallet' and password='$access';";
 }
 
 #prepare the query
@@ -168,19 +163,18 @@ $sth_access->execute();
 $" = "<br>";
 while (my @row_access = $sth_access->fetchrow_array( ) )  {
   push(@array_access, @row_access);
-
 };
 
 #set user to correct id in the mysql table if they exist
 if ($array_access[2] eq $wallet && $array_access[6] ne ''){
-$access = $array_access[6];
+  $access = $array_access[6];
 }
-elsif ($array_access[6] eq $access  && $array_access[6] ne ''){
-$access = $array_access[6];
-}
-#tell the user their pasword or id was wrong
-else {
-### first part of the html
+  elsif ($array_access[6] eq $access  && $array_access[6] ne ''){
+  $access = $array_access[6];
+  }
+  #tell the user their pasword or id was wrong
+  else {
+### first part of the html IGNORING INDENTS
 $html = qq{Content-Type: text/html
 
 <link rel="stylesheet" type="text/css" href="https://my.ergoport.dev/tosipayroll/tosipay.css"> 
@@ -266,6 +260,7 @@ $html = qq{Content-Type: text/html
 
 print $html;
 
+######END HTML#######
 
 ######## mysql initial base data and other vars #########
 
@@ -309,6 +304,8 @@ $" = "<br>";
 while (my @row = $sth->fetchrow_array( ) )  {
   push(@array, @row);
 
+
+#######HTML IGNORING INDENTS#######
 #second part of html page
 $html2  = qq{
 <li>
@@ -352,8 +349,8 @@ $html2  = qq{
 
 #print that html
 print $html2;
-@array = ();
-
+  @array = ();
+  
 };
 
 
