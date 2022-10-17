@@ -5,9 +5,9 @@ Employers can pay in ERG, Token Count, or, in USD equivalent of a Token at the t
 
 # requirements<br>
 perl<br>
-  use CGI<br>
-  use DBI<br>
-  use Time::HiRes qw(gettimeofday)<br>
+  -use CGI<br>
+  -use DBI<br>
+  -use Time::HiRes qw(gettimeofday)<br>
 perlCGI<br>
 apache<br>
 mysql<br>
