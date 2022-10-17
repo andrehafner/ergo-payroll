@@ -47,46 +47,46 @@ my $sth2 = ();
 #makeing a 1 second loop to catch all new accounts and give them a new wallet
 while (1) {
 
-#prep mysql statement to see if employer has a seed phrase yet
-$sql = "SELECT id FROM employer where company_seed_name IS NULL or '' and company_wallet_deposit_id IS NULL or '';";
+  #prep mysql statement to see if employer has a seed phrase yet
+  $sql = "SELECT id FROM employer where company_seed_name IS NULL or '' and company_wallet_deposit_id IS NULL or '';";
 
-#prepare the query
-$sth = $dbh->prepare($sql);
+  #prepare the query
+  $sth = $dbh->prepare($sql);
 
-#execute the query
-$sth->execute();
+  #execute the query
+  $sth->execute();
 
-## Retrieve the results of a row of data and put in an array
-$" = "<br>";
-while ( my @row = $sth->fetchrow_array( ) )  {
-  push(@array, @row);
-};
-
-
-#if no seed, run the wallet maker with a system call and capture the result
-if ($array[0] ne ''){
-@wallet = qx($pyfile);
-print @wallet;
+  ## Retrieve the results of a row of data and put in an array
+  $" = "<br>";
+    while ( my @row = $sth->fetchrow_array( ) )  {
+      push(@array, @row);
+    };
 
 
-#prep mysql statment to write data int seed column
-$sql2 = "update employer set company_seed_name='@wallet[0]', company_wallet_deposit_id='@wallet[1]' where id='@array[0]';";
+  #if no seed, run the wallet maker with a system call and capture the result
+  if ($array[0] ne ''){
+    @wallet = qx($pyfile);
+    print @wallet;
 
-#prepare the query
-$sth2 = $dbh->prepare($sql2);
 
-#execute the query
-$sth2->execute();
+    #prep mysql statment to write data int seed column
+    $sql2 = "update employer set company_seed_name='@wallet[0]', company_wallet_deposit_id='@wallet[1]' where id='@array[0]';";
 
-#$rc = $dbh->disconnect  || warn $dbh->errstr;
+    #prepare the query
+    $sth2 = $dbh->prepare($sql2);
 
-#wipe array
-@array = ();
+    #execute the query
+    $sth2->execute();
 
-}
+    #$rc = $dbh->disconnect  || warn $dbh->errstr;
 
-#loop
-sleep 1;
+    #wipe array
+    @array = ();
+
+  }
+
+  #loop
+  sleep 1;
 }
 
 #goodbye
