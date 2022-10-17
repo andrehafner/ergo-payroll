@@ -14,6 +14,7 @@ ergpy - https://github.com/mgpai22/ergpy<br>
 # tokens supported in this script<br>
 (more can be added of course, limit is whatever ergpy as well as my.ergoport.dev api supports)<br>
 <br>
+ERG<br>
 comet = "0cd8c9f416e5b1ca9f986a7f10a84191dfb85941619e49e53c0dc30ebf83324b"<br>
 migoreng = "0779ec04f2fae64e87418a1ad917639d4668f78484f45df962b0dec14a2591d2"<br>
 neta = "472c3d4ecaa08fb7392ff041ee2e6af75f4a558810a74b28600549d5392810e8"<br>
